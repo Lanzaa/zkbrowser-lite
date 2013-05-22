@@ -21,3 +21,6 @@ class ZooKeeperConnection:
 
     def delete(self, path):
         return zookeeper.delete(self.handle, self.root + path)
+
+    def acl(self, path):
+        return zookeeper.get_acl(self.handle, self.root + path)

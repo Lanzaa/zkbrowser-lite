@@ -1,4 +1,4 @@
-$def with (home,path,data,info,children)
+$def with (home,path,data,info,children,acl)
 <html>
 <head>
     <title>node @ $path</title>
@@ -54,5 +54,8 @@ $def with (home,path,data,info,children)
     <hr>
     Info:<br>
     <textarea wrap="off" rows="13" cols="150">$info</textarea>
+    <hr>
+    ACL:<br>
+    <textarea rows="" cols="40">$acl</textarea>
 </body>
 </html>

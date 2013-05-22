@@ -16,6 +16,8 @@ except:
 
 class node:
     def GET(self, url = ""):
+        if url.endswith('favicon.ico'):
+            return web.NotFound()
         name = url if not url.endswith('/') else url[:-1]
         home = web.ctx.homedomain + ('/' + name if name != "" else '')
         raw_data = zkc.raw_data(name)
@@ -31,7 +33,8 @@ class node:
                     data = ""
         info = json.dumps(raw_data[1], indent=4)
         children = zkc.children(name)
-        return render.page(home, name, data, info, children)
+        acl = zkc.acl(name)[1]
+        return render.page(home, name, data, info, children, acl)
 
     def POST(self, url = ""):
         path = url if not url.endswith('/') else url[:-1]
